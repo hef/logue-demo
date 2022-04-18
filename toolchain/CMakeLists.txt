@@ -9,6 +9,7 @@ elseif (APPLE)
 elseif (WIN32)
     set(arm-url https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-win32-zip.zip)
     set(arm-url-hash SHA1=f6c05562b5f031bf79ec13c6f7311245c717be1b)
+    set(exe .exe)
 endif ()
 
 FetchContent_Declare(
@@ -20,6 +21,6 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(arm-toolchain)
 set(CMAKE_SYSTEM_NAME logue PARENT_SCOPE)
 set(CMAKE_SYSTEM_PROCESSOR arm PARENT_SCOPE)
-set(CMAKE_C_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-gcc PARENT_SCOPE)
-set(CMAKE_CXX_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-g++ PARENT_SCOPE)
+set(CMAKE_C_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-gcc${exe} PARENT_SCOPE)
+set(CMAKE_CXX_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-g++${exe} PARENT_SCOPE)
 set(CMAKE_SYSROOT ${arm-toolchain_SOURCE_DIR} PARENT_SCOPE)
