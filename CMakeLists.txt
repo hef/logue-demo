@@ -2,17 +2,13 @@ cmake_minimum_required(VERSION 3.22)
 
 include(FetchContent)
 
-FetchContent_Declare(
-        arm-toolchain
-        URL https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-mac.tar.bz2
-        URL_HASH  SHA1=defb787491a64d24f25b2e3c190170f735d4f14d
-)
+add_subdirectory(toolchain)
+
 FetchContent_Declare(
         logue-sdk
         GIT_REPOSITORY https://github.com/korginc/logue-sdk.git
         GIT_TAG  ab654af0e29e5eb6eab7289d05699b45417d1f68
 )
-FetchContent_MakeAvailable(arm-toolchain)
 FetchContent_MakeAvailable(logue-sdk)
 
 set(LDDIR ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/demos/waves/ld)
