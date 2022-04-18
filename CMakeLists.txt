@@ -16,11 +16,7 @@ set(RULESPATH ${LDDIR})
 set(LDSCRIPT ${LDDIR}/userosc.ld)
 set(LDOPT "-Xlinker --just-symbols=${LDDIR}/osc_api.syms")
 
-set(CMAKE_SYSTEM_NAME logue)
-set(CMAKE_SYSTEM_PROCESSOR arm)
-SET(CMAKE_C_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-gcc)
-SET(CMAKE_CXX_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-g++)
-set(CMAKE_SYSROOT ${arm-toolchain_SOURCE_DIR})
+
 
 SET(MCU cortex-m4)
 set(MCFLAGS -mcpu=${MCU})

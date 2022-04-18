@@ -18,3 +18,8 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(arm-toolchain)
+set(CMAKE_SYSTEM_NAME logue PARENT_SCOPE)
+set(CMAKE_SYSTEM_PROCESSOR arm PARENT_SCOPE)
+SET(CMAKE_C_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-gcc PARENT_SCOPE)
+SET(CMAKE_CXX_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-g++ PARENT_SCOPE)
+set(CMAKE_SYSROOT ${arm-toolchain_SOURCE_DIR} PARENT_SCOPE)
