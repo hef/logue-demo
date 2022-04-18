@@ -24,7 +24,7 @@ jobs:
           - windows-latest
 
     steps:
-    - uses: seanmiddleditch/gha-setup-ninja@master
+    - uses: ashutoshvarma/setup-ninja@master
     - uses: actions/checkout@v3
 
     - name: Configure CMake
