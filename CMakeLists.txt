@@ -42,8 +42,6 @@ SET(CMAKE_CXX_FLAGS "${MCFLAGS} ${TOPT} ${OPT} ${CXXOPT} ${CXXWARN} ${DEFS}" )
 set(CMAKE_EXE_LINKER_FLAGS "${MCFLAGS} ${TOPT} ${OPT} -nostartfiles -Wl,-Map=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}.map,--cref,--no-warn-mismatch,--library-path=${RULESPATH},--script=${LDSCRIPT} ${LDOPT}")
 
 
-
-
 project(logue-demo)
 
 
