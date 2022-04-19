@@ -38,9 +38,30 @@ project(logue-demo)
 
 
 add_executable(waves waves.cpp waves.hpp)
+set_target_properties(waves
+        PROPERTIES
+        SUFFIX ".elf"
+        )
 target_include_directories(waves PRIVATE ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/inc)
 target_include_directories(waves PRIVATE ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/inc/dsp)
 target_include_directories(waves PRIVATE ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/inc/utils)
 target_include_directories(waves PRIVATE ${logue-sdk_SOURCE_DIR}/platform/ext/CMSIS/CMSIS/Include)
 
 
+add_custom_command(
+        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        MAIN_DEPENDENCY waves
+        COMMAND "${CMAKE_OBJCOPY}"
+        ARGS -O binary $<TARGET_FILE:waves> ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        )
+
+add_custom_command(
+        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/waves.zip
+        MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E tar cv ${CMAKE_CURRENT_BINARY_DIR}/waves.zip --format=zip --
+        ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        ${CMAKE_CURRENT_SOURCE_DIR}/manifest.json
+)
+
+add_custom_target(package DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/waves.zip)
