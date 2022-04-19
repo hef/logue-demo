@@ -24,19 +24,19 @@ set_target_properties(waves
 target_link_libraries(waves minilouge-xd-sdk)
 
 add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/payload.bin
         MAIN_DEPENDENCY waves
         COMMAND "${CMAKE_OBJCOPY}"
-        ARGS -O binary $<TARGET_FILE:waves> ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        ARGS -O binary $<TARGET_FILE:waves> ${CMAKE_CURRENT_BINARY_DIR}/payload.bin
         )
 
 add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/waves.zip
-        MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/waves.mnlgxdunit
+        MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/payload.bin
         COMMAND ${CMAKE_COMMAND}
-        ARGS -E tar cv ${CMAKE_CURRENT_BINARY_DIR}/waves.zip --format=zip --
+        ARGS -E tar cv ${CMAKE_CURRENT_BINARY_DIR}/waves.mnlgxdunit --format=zip --
         ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
         ${CMAKE_CURRENT_SOURCE_DIR}/manifest.json
 )
 
-add_custom_target(package DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/waves.zip)
+add_custom_target(package DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/waves.mnlgxdunit)
