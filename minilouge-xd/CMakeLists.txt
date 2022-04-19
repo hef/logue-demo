@@ -21,20 +21,20 @@ set(DEFS "${DDEFS}")
 #SET(CMAKE_CXX_FLAGS "${MCFLAGS} ${TOPT} ${OPT} ${CXXOPT} ${CXXWARN} ${DEFS}" )
 
 
-add_library(minilouge-xd-sdk INTERFACE EXCLUDE_FROM_ALL)
+add_library(minilouge-xd-platform INTERFACE EXCLUDE_FROM_ALL)
 
 # TODO: specifying map here doesn't make sense
-target_link_options(minilouge-xd-sdk INTERFACE
+target_link_options(minilouge-xd-platform INTERFACE
         ${MCFLAGS} ${TOPT} ${OPT} -nostartfiles -Wl,-Map=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}.map,--cref,--no-warn-mismatch,--library-path=${RULESPATH},--script=${LDSCRIPT} ${LDOPT}
         )
 
 # TODO: split C and C++ compile options
-target_compile_options(minilouge-xd-sdk INTERFACE
+target_compile_options(minilouge-xd-platform INTERFACE
         ${MCFLAGS} ${TOPT} ${OPT} ${CXXOPT} ${CXXWARN} ${DEFS}
         )
 
 
-target_include_directories(minilouge-xd-sdk INTERFACE
+target_include_directories(minilouge-xd-platform INTERFACE
         ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/inc
         ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/inc/dsp
         ${logue-sdk_SOURCE_DIR}/platform/minilogue-xd/inc/utils

@@ -21,7 +21,7 @@ set_target_properties(waves
         SUFFIX ".elf"
         )
 
-target_link_libraries(waves minilouge-xd-sdk)
+target_link_libraries(waves minilouge-xd-platform)
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/payload.bin
