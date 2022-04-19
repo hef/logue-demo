@@ -25,3 +25,6 @@ set(CMAKE_C_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-gcc${exe} PAR
 set(CMAKE_CXX_COMPILER ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-g++${exe} PARENT_SCOPE)
 set(CMAKE_OBJCOPY ${arm-toolchain_SOURCE_DIR}/bin/arm-none-eabi-objcopy${exe} PARENT_SCOPE)
 set(CMAKE_SYSROOT ${arm-toolchain_SOURCE_DIR} PARENT_SCOPE)
+
+# adding nostartfiles prevents cmake from trying to test the compiler.
+set(CMAKE_EXE_LINKER_FLAGS "-nostartfiles" PARENT_SCOPE)
