@@ -35,7 +35,7 @@ add_custom_command(
         MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/payload.bin
         COMMAND ${CMAKE_COMMAND}
         ARGS -E tar cv ${CMAKE_CURRENT_BINARY_DIR}/waves.mnlgxdunit --format=zip --
-        ${CMAKE_CURRENT_BINARY_DIR}/waves.bin
+        ${CMAKE_CURRENT_BINARY_DIR}/payload.bin
         ${CMAKE_CURRENT_SOURCE_DIR}/manifest.json
 )
 
